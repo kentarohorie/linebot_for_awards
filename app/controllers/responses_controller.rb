@@ -11,6 +11,7 @@ class ResponsesController < ApplicationController
     output_text = ""
     case event_type
     when "message"
+      puts '-------------------------------------------------------------------'
       input_text = event[:message][:text]
       output_text = input_text
       message = {
