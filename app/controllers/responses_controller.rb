@@ -19,7 +19,27 @@ class ResponsesController < ApplicationController
         output_text = "えさだにゃ〜〜"
       else
         up_love(user, false)
-        output_text = "にゃんだにゃ〜？"
+        if (0..10).cover?(user.love)
+          output_text = Settings.serif.a[rand(10)]
+        elsif (0..10).cover?(user.love)
+          output_text = Settings.serif.b[rand(10)]
+        elsif (11..20).cover?(user.love)
+          output_text = Settings.serif.c[rand(10)]
+        elsif (21..30).cover?(user.love)
+          output_text = Settings.serif.d[rand(10)]
+        elsif (31..40).cover?(user.love)
+          output_text = Settings.serif.e[rand(10)]
+        elsif (41..50).cover?(user.love)
+          output_text = Settings.serif.f[rand(10)]
+        elsif (51..60).cover?(user.love)
+          output_text = Settings.serif.g[rand(10)]
+        elsif (71..70).cover?(user.love)
+          output_text = Settings.serif.h[rand(10)]
+        elsif (81..90).cover?(user.love)
+          output_text = Settings.serif.i[rand(10)]
+        else
+          output_text = Settings.serif.j[rand(10)]
+        end
       end
       message = {
         type: "text",
