@@ -26,7 +26,7 @@ class ResponsesController < ApplicationController
         text: output_text
       }
 
-      client.reply_message("#{reply_token}", message
+      client.reply_message("#{reply_token}", message)
     end
   end
 
