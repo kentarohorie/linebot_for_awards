@@ -20,25 +20,25 @@ class ResponsesController < ApplicationController
       else
         up_love(user, false)
         if (0..10).cover?(user.love)
-          output_text = Settings.serif.a[rand(10)]
+          output_text = Settings.serif.a[rand(11)]
         elsif (0..10).cover?(user.love)
-          output_text = Settings.serif.b[rand(10)]
+          output_text = Settings.serif.b[rand(11)]
         elsif (11..20).cover?(user.love)
-          output_text = Settings.serif.c[rand(10)]
+          output_text = Settings.serif.c[rand(11)]
         elsif (21..30).cover?(user.love)
-          output_text = Settings.serif.d[rand(10)]
+          output_text = Settings.serif.d[rand(11)]
         elsif (31..40).cover?(user.love)
-          output_text = Settings.serif.e[rand(10)]
+          output_text = Settings.serif.e[rand(11)]
         elsif (41..50).cover?(user.love)
-          output_text = Settings.serif.f[rand(10)]
+          output_text = Settings.serif.f[rand(11)]
         elsif (51..60).cover?(user.love)
-          output_text = Settings.serif.g[rand(10)]
+          output_text = Settings.serif.g[rand(11)]
         elsif (71..70).cover?(user.love)
-          output_text = Settings.serif.h[rand(10)]
+          output_text = Settings.serif.h[rand(11)]
         elsif (81..90).cover?(user.love)
-          output_text = Settings.serif.i[rand(10)]
+          output_text = Settings.serif.i[rand(11)]
         else
-          output_text = Settings.serif.j[rand(10)]
+          output_text = Settings.serif.j[rand(11)]
         end
       end
       message = {
