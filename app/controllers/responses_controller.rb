@@ -29,6 +29,7 @@ class ResponsesController < ApplicationController
       config.channel_secret = CHANNEL_SECRET
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
-    puts "fugafuga"
+    puts '-----------------------------------------'
+    return @client
   end
 end
