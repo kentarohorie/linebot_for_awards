@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
     # end
 
 
-    render json: {}, status: :ok
+    # render json: {}, status: :ok
   end
 
   private
