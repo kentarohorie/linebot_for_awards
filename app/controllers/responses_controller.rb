@@ -19,8 +19,7 @@ class ResponsesController < ApplicationController
         type: "text",
         text: output_text
       }
-      user.love = user.love += 3
-      user.save
+      up_love(user)
       client.reply_message("#{reply_token}", message)
     end
   end
@@ -40,6 +39,11 @@ class ResponsesController < ApplicationController
     else
       User.create(user_id: user_id)
     end
+  end
+
+  def up_love(user)
+    user.love = user.love += 3
+    user.save
   end
 end
 
