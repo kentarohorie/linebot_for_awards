@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
     end
 
 
-    render :nothing: true, status: :ok
+    render json: {}, status: :ok
   end
 
   private
@@ -27,5 +27,3 @@ class ResponsesController < ApplicationController
   end
 end
 
-
-# {"events"=>[{"type"=>"message", "replyToken"=>"502a44ba9eea43eebea4adff9934cccd", "source"=>{"userId"=>"U9b43688bcf372dc00a22d3c55b5047f5", "type"=>"user"}, "timestamp"=>1486192444261, "message"=>{"type"=>"text", "id"=>"5598590318240", "text"=>"あ"}}], "response"=>{"events"=>[{"type"=>"message", "replyToken"=>"502a44ba9eea43eebea4adff9934cccd", "source"=>{"userId"=>"U9b43688bcf372dc00a22d3c55b5047f5", "type"=>"user"}, "timestamp"=>1486192444261, "message"=>{"type"=>"text", "id"=>"5598590318240", "text"=>"あ"}}]}}
