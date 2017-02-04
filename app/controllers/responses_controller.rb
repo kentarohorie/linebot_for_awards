@@ -42,8 +42,9 @@ class ResponsesController < ApplicationController
   end
 
   def up_love(user)
-    user.love = user.love += 3
+    user.love = user.love += 4
     user.save
   end
 end
 
+# 6時間毎に-1
