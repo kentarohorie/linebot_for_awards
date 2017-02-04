@@ -13,12 +13,16 @@ class ResponsesController < ApplicationController
     case event_type
     when "message"
       input_text = event[:message][:text]
+      if input_text.match("えさ") || input_text.match("エサ") || input_text.match("餌")
+        up_love(user, true)
+      else
+        up_love(user, false)
+      end
       output_text = "にゃんだにゃ〜？"
       message = {
         type: "text",
         text: output_text
       }
-      up_love(user)
       client.reply_message("#{reply_token}", message)
     end
   end
@@ -40,10 +44,12 @@ class ResponsesController < ApplicationController
     end
   end
 
-  def up_love(user)
-    user.love = user.love += 4
+  def up_love(user, is_feed)
+    if is_feed
+      user.love = user.love += 10
+    else
+      user.love = user.love += 4
+    end
     user.save
   end
 end
-
-# 6時間毎に-1
