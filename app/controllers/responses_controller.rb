@@ -6,6 +6,13 @@ class ResponsesController < ApplicationController
     event = params[:events][0]
     event_type = event[:type]
     reply_token = event[:replyToken]
+    puts "~=~=~=~=~~=~=~=~=~=~=~"
+    puts "~=~=~=~=~~=~=~=~=~=~=~"
+    puts event
+    puts event_type
+    puts reply_token
+    puts "~=~=~=~=~~=~=~=~=~=~=~"
+    puts "~=~=~=~=~~=~=~=~=~=~=~"
     output_text = ""
     case event_type
     when "message"
@@ -15,9 +22,8 @@ class ResponsesController < ApplicationController
         type: "text",
         text: output_text
       }
-      client.reply_message(replyToken, message)
+      client.reply_message(reply_token, message)
     end
-
 
     render json: {}, status: :ok
   end
