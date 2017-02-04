@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  puts "=~=~=~=~=~=~=~=~=~=~=~=~"
-  puts params
-  puts "=~=~=~=~=~=~=~=~=~=~=~=~"
   root 'responses#index'
+  post '/callback' => 'responses#callback'
   resources :responses, only: :index
 end
