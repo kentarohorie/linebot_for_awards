@@ -9,14 +9,23 @@ class ResponsesController < ApplicationController
     event_type = event[:type]
     reply_token = event[:replyToken]
     output_text = ""
+    user = find_or_create_user
+
     case event_type
     when "message"
       input_text = event[:message][:text]
-      output_text = input_text
+      if input_text.match("えさ") || input_text.match("エサ") || input_text.match("餌")
+        up_love(user, true)
+        output_text = "えさだにゃ〜〜"
+      else
+        up_love(user, false)
+        output_text = "にゃんだにゃ〜？"
+      end
       message = {
         type: "text",
         text: output_text
       }
+
       client.reply_message("#{reply_token}", message
     end
   end
@@ -28,4 +37,25 @@ class ResponsesController < ApplicationController
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
   end
+<<<<<<< HEAD
+=======
+
+  def find_or_create_user
+    user_id = params[:events][0][:source][:userId]
+    if user = User.find_by_user_id(user_id)
+      return user
+    else
+      User.create(user_id: user_id)
+    end
+  end
+
+  def up_love(user, is_feed)
+    if is_feed
+      user.love = user.love += 10
+    else
+      user.love = user.love += 4
+    end
+    user.save
+  end
+>>>>>>> 2f8b729e2e4550eb61f329be2e19e75ee2cb1744
 end
