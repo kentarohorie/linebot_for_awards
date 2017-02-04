@@ -20,6 +20,7 @@ class ResponsesController < ApplicationController
         text: output_text
       }
       user.love = user.love += 3
+      user.save
       client.reply_message("#{reply_token}", message)
     end
   end
