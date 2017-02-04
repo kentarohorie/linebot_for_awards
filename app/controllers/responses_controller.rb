@@ -17,8 +17,6 @@ class ResponsesController < ApplicationController
         text: output_text
       }
       puts "~=~=~=~=~=~=~="
-      puts client
-      puts client.methods
       puts "~=~=~=~=~=~=~="
 
       client.reply_message("#{reply_token}", message)
@@ -33,6 +31,8 @@ class ResponsesController < ApplicationController
       config.channel_secret = CHANNEL_SECRET
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
+    puts @client
+    binding.pry
   end
 end
 
