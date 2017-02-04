@@ -17,9 +17,9 @@ class ResponsesController < ApplicationController
         type: "text",
         text: output_text
       }
-      puts "hogehoeghogehoge"
       client.reply_message("#{reply_token}", message)
-      puts "piyopiyo"
+      puts client
+      puts '----------------------------------------'
     end
   end
 
@@ -29,7 +29,6 @@ class ResponsesController < ApplicationController
       config.channel_secret = CHANNEL_SECRET
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
-    puts '-----------------------------------------'
     return @client
   end
 end
