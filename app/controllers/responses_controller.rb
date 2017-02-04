@@ -26,7 +26,7 @@ class ResponsesController < ApplicationController
       client.reply_message(reply_token, message)
     end
 
-    render json: {}, status: :ok
+    # render json: {}, status: :ok
   end
 
   private
