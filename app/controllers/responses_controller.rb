@@ -32,7 +32,7 @@ class ResponsesController < ApplicationController
       end
     end
 
-    render json: {}, status: :ok
+    render json: {}, status: 503
   end
 
   private
