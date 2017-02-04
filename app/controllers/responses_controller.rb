@@ -17,8 +17,8 @@ class ResponsesController < ApplicationController
         text: output_text
       }
       puts "~=~=~=~=~=~=~="
-      client
-      client.methods
+      puts client
+      puts client.methods
       puts "~=~=~=~=~=~=~="
 
       client.reply_message("#{reply_token}", message)
