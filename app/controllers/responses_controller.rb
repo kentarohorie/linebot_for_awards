@@ -37,8 +37,6 @@ class ResponsesController < ApplicationController
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
   end
-<<<<<<< HEAD
-=======
 
   def find_or_create_user
     user_id = params[:events][0][:source][:userId]
@@ -57,5 +55,4 @@ class ResponsesController < ApplicationController
     end
     user.save
   end
->>>>>>> 2f8b729e2e4550eb61f329be2e19e75ee2cb1744
 end
