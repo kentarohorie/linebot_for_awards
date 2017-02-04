@@ -9,21 +9,19 @@ class ResponsesController < ApplicationController
     event_type = event[:type]
     reply_token = event[:replyToken]
     output_text = ""
+    user = find_or_create_user
+
     case event_type
     when "message"
       input_text = event[:message][:text]
-      output_text = input_text
+      output_text = "にゃんだにゃ〜？"
       message = {
         type: "text",
         text: output_text
       }
-      puts "~=~=~=~=~=~=~="
-      puts "~=~=~=~=~=~=~="
-
+      user.love = user.love += 3
       client.reply_message("#{reply_token}", message)
     end
-
-    # render json: {}, status: :ok
   end
 
   private
@@ -32,6 +30,15 @@ class ResponsesController < ApplicationController
       config.channel_secret = CHANNEL_SECRET
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
+  end
+
+  def find_or_create_user
+    user_id = params[:events][0][:source][:userId]
+    if user = User.find_by_user_id(user_id)
+      return user
+    else
+      User.create(user_id: user_id)
+    end
   end
 end
 
