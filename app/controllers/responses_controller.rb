@@ -15,10 +15,11 @@ class ResponsesController < ApplicationController
       input_text = event[:message][:text]
       if input_text.match("えさ") || input_text.match("エサ") || input_text.match("餌")
         up_love(user, true)
+        output_text = "えさだにゃ〜〜"
       else
         up_love(user, false)
+        output_text = "にゃんだにゃ〜？"
       end
-      output_text = "にゃんだにゃ〜？"
       message = {
         type: "text",
         text: output_text
