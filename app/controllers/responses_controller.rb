@@ -17,13 +17,11 @@ class ResponsesController < ApplicationController
         text: output_text
       }
       puts "~=~=~=~=~=~=~="
-      puts event
-      puts event_type
-      puts reply_token
-      puts message
+      client
+      client.methods
       puts "~=~=~=~=~=~=~="
 
-      client.reply_message(reply_token, message)
+      client.reply_message("#{reply_token}", message)
     end
 
     # render json: {}, status: :ok
