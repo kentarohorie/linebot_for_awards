@@ -11,15 +11,15 @@ class ResponsesController < ApplicationController
     output_text = ""
     case event_type
     when "message"
-      puts '-------------------------------------------------------------------'
       input_text = event[:message][:text]
       output_text = input_text
       message = {
         type: "text",
         text: output_text
       }
-
+      puts "hogehoeghogehoge"
       client.reply_message("#{reply_token}", message)
+      puts "piyopiyo"
     end
   end
 
@@ -29,5 +29,6 @@ class ResponsesController < ApplicationController
       config.channel_secret = CHANNEL_SECRET
       config.channel_token = CHANNEL_ACCESS_TOKEN
     }
+    puts "fugafuga"
   end
 end
