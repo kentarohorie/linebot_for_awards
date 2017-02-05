@@ -10,9 +10,16 @@ class ResponsesController < ApplicationController
     reply_token = event[:replyToken]
     output_text = ""
     user = find_or_create_user
+    is_death(user)
 
-    case event_type
-    when "message"
+    if is_death
+      message = {
+        type: "text",
+        text: "あなたのnyaineは死んでしまいました。"
+      }
+
+      client.reply_message("#{reply_token}", message)
+    elsif event_type == "message"
       input_text = event[:message][:text]
       if input_text.match("えさ") || input_text.match("エサ") || input_text.match("餌")
         up_love(user, true)
@@ -74,5 +81,13 @@ class ResponsesController < ApplicationController
       user.love = user.love += 4
     end
     user.save
+  end
+
+  def is_death(user)
+    if user.love < 0
+      return true
+    else
+      return false
+    end
   end
 end
