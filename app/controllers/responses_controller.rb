@@ -14,7 +14,9 @@ class ResponsesController < ApplicationController
     if is_death(user)
       output_text = "あなたのnyaineは死んでしまいました。"
       reply_text(output_text, reply_token)
-    # elsif is_monster
+    elsif is_monster
+      reply_text("500 Internal Server Error が現れた！", reply_token)
+
 
     elsif event_type == "message"
       input_text = event[:message][:text]
