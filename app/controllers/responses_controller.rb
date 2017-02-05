@@ -20,7 +20,7 @@ class ResponsesController < ApplicationController
         type: "template",
         altText: "button tamplate",
         template: {
-          type: "button",
+          type: "buttons",
           thumbnailImageUrl: "http://feelgoodokinawa1945.com/wp-content/uploads/2013/09/31ee6b4ce9b15e6ae110964569e333cb.jpg",
           title: "Title",
           text: "text",
