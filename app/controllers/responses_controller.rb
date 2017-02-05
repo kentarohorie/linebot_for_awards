@@ -79,7 +79,7 @@ class ResponsesController < ApplicationController
         altText: "モンスターが現れたにゃ！",
         template: {
           type: "buttons",
-          thumbnailImageUrl: "https://s3.amazonaws.com/kadunoko-events/uploads/user/avatar/26/small_thumb_monster02.png",
+          thumbnailImageUrl: "https://iwiz-chie.c.yimg.jp/im_siggAK7pHbPWXj37beJ3TaWQoQ---x320-y320-exp5m-n1/d/iwiz-chie/que-13118373208",
           title: "モンスターが現れたにゃ！",
           text: "攻撃を選択するにゃ",
           actions: [
