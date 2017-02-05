@@ -16,39 +16,55 @@ class ResponsesController < ApplicationController
       output_text = "あなたのnyaineは死んでしまいました。"
       reply_text(output_text, reply_token)
     elsif postback != nil && postback[:data] == "panchi"
-      message = [
-        {
-        type: "image",
-        originalContentUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg",
-        previewImageUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg"
-      },
-       {
-        type: "text",
-        text: "パンチするにゃ！"
-      }
-    ]
-      client.reply_message("#{reply_token}", message)
+      result_text = ""
       if rand(4) == 0
         user.love = -100
         user.save
-        reply_text("nyaineが攻撃をうけた！", reply_token)
+        result_text = "nyaineが攻撃をうけた！"
       else
-        reply_text("倒したにゃ！レベルアップにゃ〜♡", reply_token)
-      end #リプライはいっこだけ
-    elsif params[:events][0][:postback][:data] == "sleep"
-      message = {
-        type: "image",
-        originalContentUrl: "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fpds.exblog.jp%2Fpds%2F1%2F200907%2F18%2F94%2Fd0128594_20534369.jpg&twidth=1000&theight=0&qlt=80&res_format=jpg&op=r",
-        previewImageUrl: "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fpds.exblog.jp%2Fpds%2F1%2F200907%2F18%2F94%2Fd0128594_20534369.jpg&twidth=1000&theight=0&qlt=80&res_format=jpg&op=r"
-      }
-      client.reply_message("#{reply_token}", message)
-      if rand(4) == 0
-        user.love = -100
-        user.save
-        reply_text("nyaineが攻撃をうけた！", reply_token)
-      else
-        reply_text("倒したにゃ！レベルアップにゃ〜♡", reply_token)
+        result_text = "倒したにゃ！レベルアップにゃ〜♡"
       end
+      messages = [
+        {
+          type: "text",
+          text: "パンチ！"
+          },
+        {
+          type: "image",
+          originalContentUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg",
+          previewImageUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg"
+        },
+        {
+          type: "text",
+          text: result_text
+        }
+      ]
+      client.reply_message("#{reply_token}", messages)
+    elsif params[:events][0][:postback][:data] == "sleep"
+      result_text = ""
+      if rand(4) == 0
+        user.love = -100
+        user.save
+        result_text = "nyaineが攻撃をうけた！"
+      else
+        result_text = "倒したにゃ！レベルアップにゃ〜♡"
+      end
+      messages = [
+        {
+          type: "text",
+          text: "すまん寝！"
+          },
+        {
+          type: "image",
+          originalContentUrl: "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fpds.exblog.jp%2Fpds%2F1%2F200907%2F18%2F94%2Fd0128594_20534369.jpg&twidth=1000&theight=0&qlt=80&res_format=jpg&op=r",
+          previewImageUrl: "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fpds.exblog.jp%2Fpds%2F1%2F200907%2F18%2F94%2Fd0128594_20534369.jpg&twidth=1000&theight=0&qlt=80&res_format=jpg&op=r"
+        },
+        {
+          type: "text",
+          text: result_text
+        }
+      ]
+      client.reply_message("#{reply_token}", messages)
     elsif is_monster
       reply_content = {
         type: "template",
