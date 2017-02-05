@@ -17,32 +17,27 @@ class ResponsesController < ApplicationController
     elsif is_monster
       # reply_text("500 Internal Server Error が現れた！", reply_token)
       reply_content = {
-  "type": "template",
-  "altText": "this is a buttons template",
-  "template": {
-      "type": "buttons",
-      "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-      "title": "Menu",
-      "text": "Please select",
-      "actions": [
-          {
-            "type": "postback",
-            "label": "Buy",
-            "data": "action=buy&itemid=123"
-          },
-          {
-            "type": "postback",
-            "label": "Add to cart",
-            "data": "action=add&itemid=123"
-          },
-          {
-            "type": "uri",
-            "label": "View detail",
-            "uri": "http://example.com/page/123"
-          }
-      ]
-  }
-}
+        type: "template",
+        altText: "button tamplate",
+        template: {
+          type: "buttons",
+          thumbnailImageUrl: "https://iwiz-chie.c.yimg.jp/im_siggAK7pHbPWXj37beJ3TaWQoQ---x320-y320-exp5m-n1/d/iwiz-chie/que-13118373208",
+          title: "Menu",
+          text: "text",
+          actions: [
+            {
+              type: "postback",
+              label: "label",
+              data: "hogedata=a"
+            },
+            {
+              type: "postback",
+              label: "label",
+              data: "hogedata=a"
+            }
+          ]
+        }
+      }
       # reply_content = {
       #   type: "template",
       #   altText: "altText",
