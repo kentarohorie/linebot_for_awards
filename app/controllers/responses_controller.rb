@@ -15,7 +15,7 @@ class ResponsesController < ApplicationController
       output_text = "あなたのnyaineは死んでしまいました。"
       reply_text(output_text, reply_token)
     elsif is_monster
-      reply_text("500 Internal Server Error が現れた！", reply_token)
+      # reply_text("500 Internal Server Error が現れた！", reply_token)
       reply_content = {
         type: "template",
         altText: "button tamplate",
