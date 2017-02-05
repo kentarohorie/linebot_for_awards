@@ -16,48 +16,48 @@ class ResponsesController < ApplicationController
       reply_text(output_text, reply_token)
     elsif is_monster
       # reply_text("500 Internal Server Error が現れた！", reply_token)
-      # reply_content = {
-      #   type: "template",
-      #   altText: "button tamplate",
-      #   template: {
-      #     type: "buttons",
-      #     thumbnailImageUrl: "http://feelgoodokinawa1945.com/wp-content/uploads/2013/09/31ee6b4ce9b15e6ae110964569e333cb.jpg",
-      #     title: "Title",
-      #     text: "text",
-      #     actions: [
-      #       {
-      #         type: "postback",
-      #         label: "label",
-      #         data: "hogedata"
-      #       },
-      #       {
-      #         type: "postback",
-      #         label: "label",
-      #         data: "hogedata"
-      #       }
-      #     ]
-      #   }
-      # }
       reply_content = {
         type: "template",
-        altText: "altText",
+        altText: "button tamplate",
         template: {
-          type: "confirm",
+          type: "buttons",
+          thumbnailImageUrl: "http://feelgoodokinawa1945.com/wp-content/uploads/2013/09/31ee6b4ce9b15e6ae110964569e333cb.jpg",
+          title: "Menu",
           text: "text",
           actions: [
             {
-              type: "message",
+              type: "postback",
               label: "label",
-              text: "text"
+              data: "hogedata=a"
             },
             {
-              type: "message",
+              type: "postback",
               label: "label",
-              text: "text"
+              data: "hogedata=a"
             }
           ]
         }
       }
+      # reply_content = {
+      #   type: "template",
+      #   altText: "altText",
+      #   template: {
+      #     type: "confirm",
+      #     text: "text",
+      #     actions: [
+      #       {
+      #         type: "message",
+      #         label: "label",
+      #         text: "text"
+      #       },
+      #       {
+      #         type: "message",
+      #         label: "label",
+      #         text: "text"
+      #       }
+      #     ]
+      #   }
+      # }
       client.reply_message("#{reply_token}", reply_content)
     elsif event_type == "message"
       input_text = event[:message][:text]
