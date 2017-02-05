@@ -38,7 +38,7 @@ class ResponsesController < ApplicationController
           ]
         }
       }
-      client.reply_message("#{token}", reply_content)
+      client.reply_message("#{reply_token}", reply_content)
     elsif event_type == "message"
       input_text = event[:message][:text]
       if input_text.match("えさ") || input_text.match("エサ") || input_text.match("餌")
