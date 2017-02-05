@@ -41,6 +41,8 @@ class ResponsesController < ApplicationController
           text: result_text
         }
       ]
+      user.is_battle = 0
+      user.save
       client.reply_message("#{reply_token}", messages)
     elsif postback != nil && postback[:data] == "sleep"
       result_text = ""
@@ -66,6 +68,8 @@ class ResponsesController < ApplicationController
           text: result_text
         }
       ]
+      user.is_battle = 0
+      user.save
       client.reply_message("#{reply_token}", messages)
     elsif is_monster
       user.is_battle = 1
