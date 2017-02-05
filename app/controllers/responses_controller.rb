@@ -56,12 +56,12 @@ class ResponsesController < ApplicationController
             {
               type: "postback",
               label: "猫パンチ",
-              data: "panchi"
+              data: "panchi=h"
             },
             {
               type: "postback",
               label: "ごめん寝",
-              data: "sleep"
+              data: "sleep=h"
             }
           ]
         }
