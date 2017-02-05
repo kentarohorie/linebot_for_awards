@@ -12,12 +12,10 @@ class ResponsesController < ApplicationController
     user = find_or_create_user
 
     if is_death(user)
-      message = {
-        type: "text",
-        text: "あなたのnyaineは死んでしまいました。"
-      }
+      output_text = "あなたのnyaineは死んでしまいました。"
+      reply_text(output_text, reply_token)
+    # elsif is_monster
 
-      client.reply_message("#{reply_token}", message)
     elsif event_type == "message"
       input_text = event[:message][:text]
       if input_text.match("えさ") || input_text.match("エサ") || input_text.match("餌")
@@ -47,12 +45,7 @@ class ResponsesController < ApplicationController
           output_text = Settings.serif.j[rand(11)]
         end
       end
-      message = {
-        type: "text",
-        text: output_text
-      }
-
-      client.reply_message("#{reply_token}", message)
+      reply_text(output_text, reply_token)
     end
   end
 
@@ -88,5 +81,18 @@ class ResponsesController < ApplicationController
     else
       return false
     end
+  end
+
+  def is_monster
+    rand(4) == 0
+  end
+
+  def reply_text(text, token)
+    message = {
+        type: "text",
+        text: text
+      }
+
+      client.reply_message("#{token}", message)
   end
 end
