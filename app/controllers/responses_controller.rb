@@ -4,6 +4,9 @@ class ResponsesController < ApplicationController
   CHANNEL_SECRET = ENV['SECRET']
   CHANNEL_ACCESS_TOKEN = ENV['TOKEN']
 
+  def index
+  end
+
   def callback
     event = params[:events][0]
     event_type = event[:type]
