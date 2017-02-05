@@ -71,12 +71,12 @@ class ResponsesController < ApplicationController
       user.is_battle = 0
       user.save
       client.reply_message("#{reply_token}", messages)
-    elsif is_monster
+    elsif is_monster_bool
       user.is_battle = 1
       user.save
       reply_content = {
         type: "template",
-        altText: "button tamplate",
+        altText: "モンスターが現れたにゃ！",
         template: {
           type: "buttons",
           thumbnailImageUrl: "https://iwiz-chie.c.yimg.jp/im_siggAK7pHbPWXj37beJ3TaWQoQ---x320-y320-exp5m-n1/d/iwiz-chie/que-13118373208",
