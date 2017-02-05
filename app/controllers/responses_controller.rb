@@ -10,9 +10,8 @@ class ResponsesController < ApplicationController
     reply_token = event[:replyToken]
     output_text = ""
     user = find_or_create_user
-    is_death(user)
 
-    if is_death
+    if is_death(user)
       message = {
         type: "text",
         text: "あなたのnyaineは死んでしまいました。"
