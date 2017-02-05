@@ -10,24 +10,25 @@ class ResponsesController < ApplicationController
     reply_token = event[:replyToken]
     output_text = ""
     user = find_or_create_user
+    postback = params[:events][0][:postback]
 
     if is_death(user)
       output_text = "あなたのnyaineは死んでしまいました。"
       reply_text(output_text, reply_token)
-    elsif params[:events][0][:postback][:data] == "panchi"
-      # message = {
-      #   type: "image",
-      #   originalContentUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg",
-      #   previewImageUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg"
-      # }
-      # client.reply_message("#{reply_token}", message)
-      # if rand(4) == 0
-      #   user.love = -100
-      #   user.save
-      #   reply_text("nyaineが攻撃をうけた！", reply_token)
-      # else
-      #   reply_text("倒したにゃ！レベルアップにゃ〜♡", reply_token)
-      # end
+    elsif postback != nil && postback[:data] == "panchi"
+      message = {
+        type: "image",
+        originalContentUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg",
+        previewImageUrl: "https://cyac.com/sites/default/files/teams/2006010210_1113818290.jpg"
+      }
+      client.reply_message("#{reply_token}", message)
+      if rand(4) == 0
+        user.love = -100
+        user.save
+        reply_text("nyaineが攻撃をうけた！", reply_token)
+      else
+        reply_text("倒したにゃ！レベルアップにゃ〜♡", reply_token)
+      end
     # elsif params[:events][0][:postback][:data] == "sleep"
     #   message = {
     #     type: "image",
