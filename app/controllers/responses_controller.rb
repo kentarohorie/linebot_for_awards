@@ -40,7 +40,7 @@ class ResponsesController < ApplicationController
         }
       ]
       client.reply_message("#{reply_token}", messages)
-    elsif params[:events][0][:postback][:data] == "sleep"
+    elsif postback != nil && postback[:data] == "sleep"
       result_text = ""
       if rand(4) == 0
         user.love = -100
