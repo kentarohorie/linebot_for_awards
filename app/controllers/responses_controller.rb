@@ -44,6 +44,7 @@ class ResponsesController < ApplicationController
     #     reply_text("倒したにゃ！レベルアップにゃ〜♡", reply_token)
     #   end
     elsif is_monster
+      puts "hogehogehogehogehogehogehogehogehogehogehogehogehogeho"
       reply_content = {
         type: "template",
         altText: "button tamplate",
@@ -51,17 +52,17 @@ class ResponsesController < ApplicationController
           type: "buttons",
           thumbnailImageUrl: "https://iwiz-chie.c.yimg.jp/im_siggAK7pHbPWXj37beJ3TaWQoQ---x320-y320-exp5m-n1/d/iwiz-chie/que-13118373208",
           title: "モンスターが現れたにゃ！",
-          text: "",
+          text: "a",
           actions: [
             {
               type: "postback",
               label: "猫パンチ",
-              data: "panchi=h"
+              data: "panchi"
             },
             {
               type: "postback",
               label: "ごめん寝",
-              data: "sleep=h"
+              data: "sleep"
             }
           ]
         }
