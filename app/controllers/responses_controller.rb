@@ -11,6 +11,8 @@ class ResponsesController < ApplicationController
     output_text = ""
     user = find_or_create_user
     postback = params[:events][0][:postback]
+    is_monster_bool = is_monster
+    is_monster_bool = true if user.is_battle == 1
 
     if is_death(user)
       output_text = "あなたのnyaineは死んでしまいました。"
@@ -66,6 +68,8 @@ class ResponsesController < ApplicationController
       ]
       client.reply_message("#{reply_token}", messages)
     elsif is_monster
+      user.is_battle = 1
+      user.save
       reply_content = {
         type: "template",
         altText: "button tamplate",
@@ -157,7 +161,7 @@ class ResponsesController < ApplicationController
   end
 
   def is_monster
-    rand(4) == 0
+    rand(9) == 0
   end
 
   def reply_text(text, token)
